@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>柯里化</title>
+  <!-- <script src="https://cdn.bootcss.com/ramda/0.26.1/ramda.min.js"></script> -->
+</head>
+
+<body>
+  <script>
+    // console.log(R.add(2, 3))
+    // console.log(R.add(7)(10))
+
+    const curry = (fn, arr = []) =>
+      (...args) =>
+        (params => arg.length === fn.length ? fn(...params) : curry(fn, params))([...arr, ...args])
+
+
+    function curry11(fn, args) {
+      console.group()
+      var length = fn.length; // 获取函数参数的个数
+      var args = args || [];
+      return function () {
+        // Array.from(arguments)
+        // arguments 只是一个类数组，其实并不是一个真正的数据不具备slice方法。
+        // Array.prototype.slice.call(arguments)能将具有length属性的对象转成数组
+        let newArgs = args.concat(Array.prototype.slice.call(arguments));
+        console.log(newArgs)
+        if (newArgs.length < length) {
+          return curry11.call(this, fn, newArgs);
+        } else {
+          return fn.apply(this, newArgs);
+        }
+      }
+    }
+
+    function sum(a, b, c) {
+      return a + b + c;
+    }
+
+    var sumFunc = curry11(sum);
+
+    console.log(sumFunc(2)(3)(55))
+
+
+    var arr = [1, [2, [3, 4]]];
+
+
+  </script>
+</body>
+
+</html>

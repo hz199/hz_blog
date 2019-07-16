@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <a-comp></a-comp>
+    <b-comp></b-comp>
+  </div>
+
+<script>
+  // B组件
+  Vue.component('b-comp', {
+    data () {
+      return {
+        data: ''
+      }
+    },
+    template: `
+      <div>
+        <hr>
+        <h4>b-comp</h4>
+        {{data}}
+      </div>
+    `,
+    mounted() {
+      this.$EventBus.$on('a-click', (payload) => {
+        this.data = payload
+      })
+    },
+    beforeDestroy() {
+      this.$EventBus.$off('a-click')
+    }
+  })
+  // A组件
+  Vue.component('a-comp', {
+    template: `
+      <div>
+        <h3>a-comp</h3>
+        <button @click="handleClick">A 组件 Button</button>
+      </div>
+    `,
+    methods: {
+      handleClick () {
+        this.$EventBus.$emit('a-click', '这是A组件传的值')
+      }
+    }
+  })
+
+  Vue.prototype.$EventBus = new Vue()
+  
+  new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

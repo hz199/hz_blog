@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>{{ message }}</h3>
+    <children-comp @on-button-click="buttonClickEmit"></children-comp>
+  </div>
+
+<script>
+  Vue.component('ChildrenComp', {
+    template: `
+      <div>
+        <button @click="handleClick">点击</button>
+      </div>
+    `,
+    methods: {
+      handleClick () {
+        // 同时也可以传递多个值
+        this.$emit('on-button-click', '这是向父组件传的值', '哈哈哈')
+        // this.$emit('onButtonClick', '这是向父组件传的值') // Vue CDN引入时 驼峰事件好像不管用
+      }
+    }
+  })
+
+
+  new Vue({
+    el: '#app',
+    data () {
+      return {
+        message: 'message'
+      }
+    },
+    methods: {
+      buttonClickEmit (...payload) {
+        this.message = payload
+      }
+    }
+  })
+</script>
+</body>
+</html>

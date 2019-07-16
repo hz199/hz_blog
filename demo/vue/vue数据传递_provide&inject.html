@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <a-comp>
+      <b-comp>
+        <c-comp></c-comp>
+      </b-comp>
+    </a-comp>
+  </div>
+
+  <script>
+    // C组件
+    Vue.component('c-comp', {
+      template: `
+      <div>
+        <h5>c-comp</h5>
+        A组件传值：{{message1}}
+      </div>
+    `,
+      // from 是接收父组件传来的Key, default: 是对应的value
+      inject: {
+        message1: { from: 'message', default: '哈哈' }
+      }
+    })
+    // B组件
+    Vue.component('b-comp', {
+      template: `
+      <div>
+        <h4>b-comp</h4>
+        A组件传值：{{message}}
+        <slot/>
+      </div>
+    `,
+    inject: [ 'message' ]
+    })
+    // A组件
+    Vue.component('a-comp', {
+      template: `
+      <div>
+        <h3>a-comp</h3>
+        <slot/>
+      </div>
+    `,
+      // provide: {
+      //   message: 'hello Vve'
+      // }
+      provide: () => {
+        return {
+          message: 'hello Vue'
+        }
+      }
+    })
+
+    new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue.extend组件</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+  <style>
+    .msg-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .msg-content {
+      width: 200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 8px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #000;
+      color: #666666;
+    }
+
+    .messageFade-enter-active,
+    .messageFade-leave-active {
+      transition: all .5s
+    }
+
+    .messageFade-enter,
+    .messageFade-leave-active {
+      opacity: 0;
+      transform: scale(0.1) translate3d(0, 0, 2000px);
+      transform-origin: left center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="clickFunc">点击</button>
+  </div>
+  <script>
+
+    /******************* 模板 *******************/
+    const MessageTemplate = {
+      name: 'MessageTemplate',
+      template: `
+            <transition name="messageFade" @after-leave="afterLeave" @after-enter="afterEnter">
+              <div class="msg-wrapper"
+              v-show="visibleShow"
+              :style="style">
+                <div class="msg-content">
+                  {{text}}
+                </div>
+              </div>
+            </transition>`,
+      props: {
+        text: {
+          type: String,
+          default: '',
+          required: true
+        }
+      },
+      data() {
+        return {
+          verticalOffset: 0,
+          visibleShow: true,
+          closeTime: 3000,
+          timer: null
+        }
+      },
+      computed: {
+        style() {
+          return {}
+        }
+      },
+      methods: {
+        afterLeave() {
+          this.$emit('closed')
+        },
+        afterEnter() { },
+        createTimer() {
+          if (this.closeTime) {
+            this.timer = setTimeout(() => {
+              this.visibleShow = false
+            }, this.closeTime)
+          }
+        },
+        clearTime() {
+          if (this.timer) {
+            clearTimeout(this.timer)
+          }
+        }
+      },
+      beforeDestroy() {
+        this.clearTime()
+      },
+      mounted() {
+        this.createTimer()
+      }
+    }
+
+    /******************* 模板 Constructor *******************/
+
+    // MessageTemplate 模板 扩展 Vue组件
+    // 这个对象里面的参数 会覆盖 模板里面的参数 data compute methods ...， 如果模板里面要使用扩展的参数 模板里面必须优先声明或函数定义。
+    const templateConstructor = {
+      extends: MessageTemplate,
+      data() {
+        return {
+          // 垂直方向两个Message 之间的距离
+          verticalOffset: 0,
+          visibleShow: false, // 扩展后元素 默认是 不显示的为了触发 transition 动画
+        }
+      },
+      computed: {
+        style() {
+          return {
+            top: `${this.verticalOffset}px`
+          }
+        }
+      }
+    }
+
+    /******************* 调用函数 *******************/
+    const INSTANCES = []
+    let INSTANCEID = 1
+    const OFFSET = 16
+    // 删除当前 instance 对象
+    const removeInstance = (currentInstance) => {
+      if (!currentInstance) return
+      // 当前dom的索引
+      const index = INSTANCES.findIndex(instance => instance.id === currentInstance.id)
+
+      INSTANCES.splice(index, 1)
+
+      if (INSTANCES.length <= 1) return
+      for (let i = index; i < INSTANCES.length - 1; i++) {
+        INSTANCES[i].verticalOffset = parseInt(INSTANCES[i].verticalOffset) - OFFSET
+      }
+    }
+
+    const MessageConstructor = Vue.extend(templateConstructor)
+    /**
+     * @param option {text: '提示信息'}
+     */
+    const $Message = function (option) {
+      const instance = new MessageConstructor({
+        propsData: option
+      })
+
+      const id = `$Message${INSTANCEID++}`
+      instance.id = id
+      instance.vm = instance.$mount()
+      instance.vm.$el.id = id
+      document.body.appendChild(instance.vm.$el)
+      instance.vm.visibleShow = true // 默认为 不显示 这里修改为显示 触发 transition 动画
+
+      // 设置 高度偏移量
+      let verticalOffset = 0
+      INSTANCES.forEach(item => {
+        verticalOffset += OFFSET
+      })
+      instance.verticalOffset = verticalOffset
+      INSTANCES.push(instance.vm)
+
+      instance.vm.$on('closed', () => {
+        removeInstance(instance)
+        document.body.removeChild(instance.vm.$el)
+        instance.vm.$destroy()
+      })
+
+      // 返回当前组件Vm
+      return instance.vm
+    }
+
+    const $MessageCtrl = {
+      install (Vue) {
+        Vue.prototype.$Message = $Message
+      }
+    }
+
+    /******************* 创建VUE 实例 *******************/
+    Vue.use($MessageCtrl)
+
+    new Vue({
+      el: '#app',
+      components: {
+        MessageTemplate
+      },
+      methods: {
+        clickFunc() {
+          this.$Message({
+            text: `${Math.random()}`
+          })
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

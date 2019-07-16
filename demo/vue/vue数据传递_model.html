@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>message: {{ message }}</h3>
+    <a-comp v-model="message"></a-comp>
+  </div>
+
+  <script>
+    Vue.component('a-comp', {
+      model: {
+        prop: 'text',
+        event: 'onChange'
+      },
+      props: ['text'],
+      template: `
+      <div>
+        <h3>a-comp</h3>
+        text: {{text}} <br>
+        <input @input="handleChange">
+      </div>
+    `,
+      methods: {
+        handleChange(e) {
+          this.$emit('onChange', e.target.value)
+        }
+      }
+    })
+
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          message: 'hello vue'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

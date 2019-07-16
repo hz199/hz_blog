@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>{{ message }}</h3>
+    <children-comp :message="message"></children-comp>
+    <hr>
+    <children-comp :text="text"></children-comp>
+    <hr>
+    <children-comp :text="text" :name="'test-class'"></children-comp>
+  </div>
+
+<script>
+  Vue.component('ChildrenComp', {
+    props: {
+      message: {
+        type: String,
+        default: () => '默认message'  // 当message没有传值时，存在默认值
+      },
+      text: String,
+      name: String
+    },
+    template: `
+      <div>
+        这是子组件 <br>
+        message: {{message}} <br>
+        text: {{text}}
+
+        <div class="testClass" :class="name">哈哈</div>
+      </div>
+    `
+  })
+
+  new Vue({
+    el: '#app',
+    data () {
+      return {
+        message: 'hello Vue',
+        text: '前端er'
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue作用域插槽</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- CDN 引入的时候 组件名 和属性名 一定要用 - 连接 不能用驼峰 -->
+    <children-comp :test="testObj">
+      <template v-slot:header="testObjProps">
+        <h1>{{testObj.headerData}}</h1>
+        $header: {{testObjProps.$header}}
+        <h2>{{testObj[testObjProps.$header]}}</h2>
+      </template>
+
+      <!-- v-slot 也可以去除 -->
+      <template v-slot>
+        <p>{{testObj.defaultData}}</p>
+      </template>
+
+      <template #default2>
+        <p>default2：{{testObj.defaultData}}</p>
+      </template>
+
+      <!-- 插槽解构 插槽也可以缩写 # 代替 -->
+      <template #footer="{ $test }">
+        <p>{{$test.footerData}}</p>
+      </template>
+    </children-comp>
+  </div>
+  <script>
+    Vue.component('ChildrenComp', {
+      props: {
+        test: Object
+      },
+      template: `
+        <div class="container">
+          <header>
+            <slot name="header" $header="headerData"></slot>
+          </header>
+          <main>
+            <slot></slot>
+            <slot name="default2"></slot>
+          </main>
+          <footer>
+            <slot name="footer" :$test="test"></slot>
+          </footer>
+        </div>
+      `
+    })
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          testObj: {
+            headerData: 'header',
+            defaultData: 'default',
+            footerData: 'footer'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

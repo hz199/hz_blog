@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Symbol</title>
+</head>
+<body>
+  <script>
+    let str = Symbol('str')
+    let obj1 = {
+      [str]: 'test',
+      test: 'aaaa'
+    }
+    console.log(Object.keys(obj1)) // ["test"]
+    console.log(Object.getOwnPropertyNames(obj1)) // ["test"]
+    console.log(Object.getOwnPropertySymbols(obj1)) // [Symbol(str)]
+
+    console.log(Reflect.ownKeys(obj1)) // ["test", Symbol(str)]
+  </script>
+</body>
+</html>

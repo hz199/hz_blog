@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>new运算符</title>
+</head>
+
+<body>
+  <script>
+    // class People {
+    //   constructor(name) {
+    //     this.name = name
+    //   }
+    // }
+    // function aaa() {
+
+    // }
+
+    // console.log(typeof aaa)
+    // function People (name) {
+    //   this.name = name
+    // }
+
+    // // const man = new People()
+
+    // // console.log(man.constructor === People)
+
+    // function create(func, ...args) {
+    //   let obj = {}
+    //   Object.setPrototypeOf(obj, func.prototype)
+    //   console.log(obj, 111)
+    //   let result = func.apply(obj, args)
+
+    //   // return result instanceof Object ? result : obj
+    // }
+
+    // const man1 = create(People, 'tom')
+
+    // console.log(man1)
+
+
+    // function add(a, b) {
+    //   return a + b;
+    // }
+    // function sub(a, b) {
+    //   return a - b;
+    // }
+    // // var a1 = add.apply(sub, [4, 2]);　　//sub调用add的方法
+    // var a2 = sub.apply(add, [8, 2]);
+    // // console.log(a1);  //6     
+    // console.log(a2);  //2
+
+    // // /*call的用法*/
+    // var a1 = add.call(sub, 8, 2);
+    // console.log(a1)
+
+    function People(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    const man = new People('Tom', 18)
+
+    console.log(man)
+
+  </script>
+</body>
+
+</html>

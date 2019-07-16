@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>最外层message: {{ message }}</h3>
+    <a-comp :message="message" :text="'最外层 -> a'"></a-comp>
+  </div>
+
+<script>
+   Vue.component('c-comp', {
+    props: [ 'message' ],
+    template: `
+      <div>
+        <h5>C-comp</h5>
+        {{ message }}
+      </div>
+    `,
+    mounted () {
+      console.log(this.$attrs, 'c')
+    }
+  })
+  Vue.component('b-comp', {
+    template: `
+      <div>
+        <h4>b-comp</h4>
+        <c-comp v-bind="$attrs" :text="'b -> c'"></c-comp>
+      </div>
+    `,
+    mounted () {
+      console.log(this.$attrs, 'b')
+    }
+  })
+  Vue.component('a-comp', {
+    template: `
+      <div>
+        <h3>a-comp</h3>
+        <b-comp v-bind="$attrs" :text="'a -> b'"></b-comp>
+      </div>
+    `,
+    mounted () {
+      console.log(this.$attrs, 'a')
+    }
+  })
+
+
+  new Vue({
+    el: '#app',
+    data () {
+      return {
+        message: 'hello vue'
+      }
+    },
+    methods: {
+    }
+  })
+</script>
+</body>
+</html>

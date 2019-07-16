@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>最外层message: {{ message }}</h3>
+    <a-comp @on-c-click="receiveClick"></a-comp>
+  </div>
+
+<script>
+   Vue.component('c-comp', {
+    template: `
+      <div>
+        <h5>C-comp</h5>
+        <button @click="handleClick">C组件 Click</button>
+      </div>
+    `,
+    methods: {
+      handleClick () {
+        this.$emit('on-c-click', 'C组件传值')
+      }
+    }
+  })
+  Vue.component('b-comp', {
+    template: `
+      <div>
+        <h4>b-comp</h4>
+        <c-comp v-on="$listeners"></c-comp>
+      </div>
+    `
+  })
+  // 这里A组件也接收了C组件emit事件，同时也会调用回调
+  Vue.component('a-comp', {
+    template: `
+      <div>
+        <h3>a-comp</h3>
+        <b-comp v-on="$listeners" @on-c-click="receiveClick"></b-comp>
+      </div>
+    `,
+    methods: {
+      receiveClick (payload) {
+        console.log(payload, 'A组件接收')
+      }
+    }
+  })
+
+
+  new Vue({
+    el: '#app',
+    data () {
+      return {
+        message: 'hello vue'
+      }
+    },
+    methods: {
+      receiveClick (payload) {
+        console.log(payload)
+
+        this.message = payload
+      }
+    }
+  })
+</script>
+</body>
+</html>

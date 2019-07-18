@@ -61,13 +61,12 @@ export default {
         this.list.push({
           tag: tag,
           title: page.title,
-          path: page.path
+          path: page.path,
+          bgImage: page.frontmatter.meta[0] ? page.frontmatter.meta[0].bgImage : ''
         })
       }
     }
     this.navs = this.$site.themeConfig.nav
-
-    console.log(this.$site)
   },
   methods: {
     onClick: function(arg) {
@@ -97,4 +96,21 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.layout {
+  max-width 966px
+  margin 0 auto
+  padding 0 20px
+  box-sizing border-box
+
+  div {
+    box-sizing border-box
+  }
+}
+@media screen and (max-width: 966px) {
+  .layout {
+    max-width 100%
+    min-width 100%;
+  }
+}
+</style>

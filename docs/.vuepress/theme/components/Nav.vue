@@ -1,6 +1,6 @@
 <template>
   <nav class="navs">
-    <a class="nav" v-for="(nav, index) in navs" :key="index" :href="nav.link" target="_blank">
+    <a class="nav" v-for="(nav, index) in navs" :key="index" :href="nav.link">
       <img v-if="nav.text === 'github'" src="../images/github.png" />
       <span v-else>{{ nav.text }}</span>
     </a>

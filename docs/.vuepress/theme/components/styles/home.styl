@@ -1,6 +1,8 @@
 .home {
-  column-count 4
+  column-count 3
   column-gap 2em
+  position: relative
+  margin-top 20px 
   .item {
     margin-bottom 1em
     -moz-page-break-inside avoid
@@ -11,7 +13,7 @@
     position relative
     cursor pointer
     box-shadow 5px 5px 5px rgba(0,0,0,0.4)
-    > img {
+    img {
       width 100%
       height auto
       z-index 1
@@ -93,6 +95,22 @@
     border-style solid
     z-index 1
   }
+}
+
+.home:before {
+  content: "";
+  display: block;
+  border: 2px solid #ffffff;
+  border-bottom: 12px solid #ffffff;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  right: -20px;
+  bottom: -100px;
+  border-radius:20px 20px 20px 600px;  
 }
 
 @media screen and (max-width: 966px) {

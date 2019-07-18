@@ -1,20 +1,18 @@
 <template>
-  <!-- <div class="home">
-    <div class="item" v-for="(item, index) in list" :key="index">
-      <router-link class="title" :to="item.path">{{ item.title }}</router-link>
-      <div class="tag">{{ item.tag }}</div>
-    </div>
-  </div> -->
   <div class="home">
+    <div class="item">
+      哈哈哈
+    </div>
     <div class="item" v-for="(item, index) in list" :key="index">
-      <!-- <router-link class="title" :to="item.path">{{ item.title }}</router-link>
-      <div class="tag">{{ item.tag }}</div> -->
-      <div class="ribbonHead">
-        <h4>{{ item.title }}</h4>
-        <div class="ribbonBack"></div>
-      </div>
+      <!-- <div class="tag">{{ item.tag }}</div> -->
+      <router-link class="title" :to="item.path">
+        <div class="ribbonHead">
+          <h4>{{ item.title }}</h4>
+          <div class="ribbonBack"></div>
+        </div>
 
-      <img :src="item.bgImage" alt="">
+        <img :src="item.bgImage" alt="">
+      </router-link>
     </div>
   </div>
 </template>

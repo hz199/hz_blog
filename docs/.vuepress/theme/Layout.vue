@@ -1,9 +1,7 @@
 <template>
   <div class="layout">
     <Header :onclick="onClick" />
-    <!-- <Nav :navs="navs" />
-    <SearchBox v-if="$site.themeConfig.search" />
-    <Tag :tags="tags" :onclick="onClick" /> -->
+    <SearchBox v-if="$site.themeConfig.search" style="margin: 20px 0;" />
     <main>
       <Home v-if="$page.path === '/'" :list="list" />
       <Page v-else />

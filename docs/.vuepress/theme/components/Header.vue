@@ -15,5 +15,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+.header {
+  height 64px
+  line-height 64px  
+}
 </style>

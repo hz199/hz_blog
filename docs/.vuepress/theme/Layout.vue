@@ -3,10 +3,10 @@
     <Header :onclick="onClick" />
     <SearchBox v-if="$site.themeConfig.search" style="margin: 20px 0;" />
     <main>
-      <Home v-if="$page.path === '/'" :list="list" />
+      <Home v-if="$page.path === '/'" :list="list" :tags="tags" :onClick="onClick" />
       <Page v-else />
     </main>
-    <Footer />
+    <Footer :footerText="footerText" />
   </div>
 </template>
 
@@ -32,7 +32,8 @@ export default {
   data: function() {
     return {
       navs: [],
-      list: []
+      list: [],
+      footerText: ''
     }
   },
   computed: {
@@ -44,7 +45,10 @@ export default {
         let tag = decodeURI(page.path.split("/")[1])
         if (page.path !== "/" && !flag[tag]) {
           flag[tag] = true
-          tags.push(tag)
+          tags.push({
+            tag,
+            color: `#${Math.floor(Math.random()*0xffffff).toString(16)}`
+          })
         }
       }
       return tags
@@ -62,6 +66,8 @@ export default {
           path: page.path,
           bgImage: page.frontmatter.meta[0] ? page.frontmatter.meta[0].bgImage : ''
         })
+      } else {
+        this.footerText = page.frontmatter.footer
       }
     }
     this.navs = this.$site.themeConfig.nav
@@ -77,17 +83,20 @@ export default {
             this.list.push({
               tag: tag,
               title: page.title,
-              path: page.path
+              path: page.path,
+              bgImage: page.frontmatter.meta[0] ? page.frontmatter.meta[0].bgImage : ''
             })
           } else if (arg === tag) {
             this.list.push({
               tag: arg,
               title: page.title,
-              path: page.path
+              path: page.path,
+              bgImage: page.frontmatter.meta[0] ? page.frontmatter.meta[0].bgImage : ''
             })
           }
         }
       }
+      
       this.$router.push({ path: "/" })
     }
   }

@@ -1,8 +1,9 @@
 .home {
   column-count 3
-  column-gap 2em
+  column-gap 3em
   position: relative
-  margin-top 20px 
+  margin-top 20px
+  transition: height 1s;
   .item {
     margin-bottom 1em
     -moz-page-break-inside avoid
@@ -12,7 +13,7 @@
     overflow hidden
     position relative
     cursor pointer
-    box-shadow 5px 5px 5px rgba(0,0,0,0.4)
+    // box-shadow 0px 0px 10px rgba(0,0,0,0.4)
     img {
       width 100%
       height auto
@@ -20,6 +21,50 @@
       position relative
       display block
       border-radius 8px
+    }
+    ul {
+      margin 0
+      padding 0
+    }
+    .tag {
+      padding-left: 12px
+      padding-right: 10px
+    }
+    .tag:after {
+      content: " ";
+      width: 4px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.3);
+      position: absolute;
+      top: 10px;
+      left: -1px;
+    }
+    li {
+      display inline-block
+      padding: 5px 8px
+      position: relative
+      margin: 5px 15px
+      font-size: 12px
+      line-height: 14px
+      color: #fefefe
+      // transform rotate(-90deg)
+      background: yellow
+      border-radius: 0 5px 5px 0
+      span {
+        display inline-block
+      }
+      i {
+        position: absolute;
+        top: -0px
+        left: -30px
+        right: 100%;
+        font-size: 0;
+        line-height: 0;
+        border: 12px solid transparent;
+        // border-right-color: rgb(219, 86, 64);
+      }
     }
   }
   .item .ribbonHead h4, .item .ribbonHead .ribbonBack {
@@ -97,6 +142,14 @@
   }
 }
 
+.clearfix:after {
+  content ''
+  height 0
+  line-height 0
+  clear both
+  overflow hidden 
+}
+
 .home:before {
   content: "";
   display: block;
@@ -111,6 +164,7 @@
   right: -20px;
   bottom: -100px;
   border-radius:20px 20px 20px 600px;  
+  transition: all 1s;
 }
 
 @media screen and (max-width: 966px) {

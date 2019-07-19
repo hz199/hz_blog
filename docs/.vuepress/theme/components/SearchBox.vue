@@ -11,6 +11,7 @@
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
+      placeholder="请输入搜索关键词~"
     >
     <ul
       class="suggestions"

@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <a class="button" :href="href" target="_blank" v-if="$site.themeConfig.editLinks">{{ $site.themeConfig.editLinkText }}</a>
-
+  <div class="page">
     <Content />
   </div>
 </template>
@@ -17,13 +15,15 @@ export default {
       return `${github}/${repo}/edit/master${file}`
     }
   },
+  mounted () {
+    const bgImage = this.$page.frontmatter.meta[0].bgImage
+    document.getElementById('app').style.backgroundImage = `url(${bgImage})`
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-a.button
-  cursor pointer
-  color #999
-  font-size 14px
-  border-bottom none
+.page {
+  position relative
+}
 </style>

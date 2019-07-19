@@ -36,7 +36,10 @@ export default {
     'list',
     'onClick',
     'tags'
-  ]
+  ],
+  mounted () {
+    document.getElementById('app').style.backgroundImage = ''
+  }
 }
 </script>
 

@@ -97,7 +97,6 @@ module.exports = {
 function genSidebarConfig(dir, hasSub) {
   let p = path.join(__dirname, '../', dir);
   let files = fs.readdirSync(p);
-  
   let subDir = hasSub ? dir.split('/')[1] : '';
   files = files.map(item => {
     item = subDir ? subDir + '/' + path.basename(item, '.md') : path.basename(item, '.md');

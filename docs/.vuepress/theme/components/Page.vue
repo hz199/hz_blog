@@ -1,5 +1,8 @@
 <template>
   <div class="page">
+
+    <h1>{{$page.title}}</h1>
+
     <Content />
   </div>
 </template>
@@ -18,6 +21,7 @@ export default {
   mounted () {
     const bgImage = this.$page.frontmatter.meta[0].bgImage
     document.getElementById('app').style.backgroundImage = `url(${bgImage})`
+
   }
 }
 </script>

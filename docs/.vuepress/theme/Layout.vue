@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Header :onclick="onClick" />
+    <Header :navs="navs" :onclick="onClick" />
     <SearchBox v-if="$site.themeConfig.search" style="margin: 20px 0;" />
     <main>
       <Home v-if="$page.path === '/'" :list="list" :tags="tags" :onClick="onClick" />
@@ -58,13 +58,13 @@ export default {
     this.list = [];
     for (let i = 0; i < this.$site.pages.length; i++) {
       let page = this.$site.pages[i];
-      if (page.path !== "/") {
+      if (page.path !== "/" && page.frontmatter.tag !== 'Home') {
         let tag = decodeURI(page.path.split("/")[1]);
         this.list.push({
           tag: tag,
           title: page.title,
           path: page.path,
-          bgImage: page.frontmatter.meta[0]
+          bgImage: page.frontmatter.meta
             ? page.frontmatter.meta[0].bgImage
             : ""
         });
@@ -81,7 +81,7 @@ export default {
         let page = this.$site.pages[i];
         if (page.path !== "/") {
           let tag = page.frontmatter.tag;
-          if (arg === "/") {
+          if (arg === "/" && tag !== 'Home') {
             this.list.push({
               tag: tag,
               title: page.title,

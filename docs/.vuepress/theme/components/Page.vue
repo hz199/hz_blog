@@ -19,9 +19,10 @@ export default {
     }
   },
   mounted () {
-    const bgImage = this.$page.frontmatter.meta[0].bgImage
-    document.getElementById('app').style.backgroundImage = `url(${bgImage})`
-
+    if (this.$page.frontmatter.tag !== 'Home') {
+      const bgImage = this.$page.frontmatter.meta[0].bgImage
+      document.getElementById('app').style.backgroundImage = `url(${bgImage})`
+    }
   }
 }
 </script>

@@ -24,10 +24,6 @@ module.exports = {
     search: true,
     nav: [
       {
-        text: '主页',
-        link: '/'
-      },
-      {
         text: '前端',
         link: '/fe/home'
       },
@@ -46,7 +42,7 @@ module.exports = {
       {
         text: '更多',
         items: [
-          { text: '个人网站', link: 'http://blog.closeeyes.cn/' },
+          // { text: '个人网站', link: 'http://blog.closeeyes.cn/' },
           { text: 'github', link: 'https://github.com/hz199/__' },
           { text: 'react-admin', link: 'https://react.closeeyes.cn/' }
         ]

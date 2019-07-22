@@ -68,7 +68,9 @@ export default {
             ? page.frontmatter.meta[0].bgImage
             : ""
         });
-      } else {
+      }
+
+      if (page.frontmatter.footer) {
         this.footerText = page.frontmatter.footer;
       }
     }

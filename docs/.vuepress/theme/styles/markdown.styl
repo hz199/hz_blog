@@ -103,7 +103,7 @@ th, td
 
 /* Override Prism */
 div[class*="language-"]
-  background #f8f8f8 !important
+  background #282c34 !important
   &:before 
     color #ccc !important
   &:after
@@ -119,3 +119,20 @@ div[class*="language-"]
       span
         background transparent !important
 
+code[class*="language-"], pre[class*="language-"]
+  text-shadow none !important
+div[class*="language-"] pre[class*="language-"] code
+  color: #c1c1c1 !important;
+
+// 关键词
+pre[class*="language-"]
+  .token.keyword
+    color: #cc99cd
+  .token.function
+    color: #f08d49
+  .token.string
+    color: #42b983
+  .token.tag
+    color: #e2777a
+  .token.number
+    color: #f08d49;

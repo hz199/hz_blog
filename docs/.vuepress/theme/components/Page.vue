@@ -1,7 +1,7 @@
 <template>
   <div class="page">
 
-    <h1>{{$page.title}}</h1>
+    <h2 style="border-bottom: none">{{$page.title}}</h2>
 
     <Content />
   </div>

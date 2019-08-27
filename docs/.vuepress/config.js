@@ -1,15 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 
-function webpackPath () {
-  const pathArray = fs.readdirSync(path.resolve(__dirname, '../webpack'))
-
-  return pathArray.map(item => {
-    return item.split('.md')[0]
-  })
-}
-
-
 module.exports = {
   title: 'H.Z的学习笔记',
   description: 'HZ的前端学习笔记，',
@@ -28,8 +19,8 @@ module.exports = {
         link: '/fe/home'
       },
       {
-        text: 'webpack',
-        link: '/webpack/01'
+        text: '工具',
+        link: '/utils/home'
       },
       {
         text: 'Flutter',
@@ -85,7 +76,13 @@ module.exports = {
           children: genSidebarConfig("node/koa", true)
         }
       ],
-      '/webpack/': webpackPath()
+      '/utils/': [
+        {
+          title: "webpack",
+          collapsable: true,
+          children: genSidebarConfig("utils/webpack", true)
+        }
+      ]
     }
   }
 }

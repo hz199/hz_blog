@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>react-useState</title>
+  <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.profiling.min.js"></script>
+  <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+
+  <script type="text/babel">
+
+
+    const App = function (props) {
+      const [ num, setNum ] = React.useState(0)
+      const [ num1, setNum1 ] = React.useState(0)
+
+      React.useEffect(() => {
+        console.log('useEffect') 
+      }, [num])
+
+      return (
+        <div>
+          <p>{num}</p>
+          <button onClick={() => setNum(num + 1)}>点击1</button> 
+          <p>{num1}</p>
+          <button onClick={() => setNum1(num1 + 1)}>点击2</button>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<App/>, document.getElementById('app'))
+  </script>
+
+</body>
+</html>

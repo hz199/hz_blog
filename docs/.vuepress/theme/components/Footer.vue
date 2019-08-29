@@ -15,7 +15,8 @@ export default {
 <style lang="stylus" scoped>
 .footer {
   margin-top 140px
-  margin-bottom 40px
+  padding-bottom 40px
+  // margin-bottom 40px
   font-family Georgia
   font-style italic
   text-align center

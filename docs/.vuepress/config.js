@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs')
 
 module.exports = {
+  evergreen: true,
   title: 'H.Z的学习笔记',
   description: 'HZ的前端学习笔记，',
   base: '/',

@@ -48,6 +48,11 @@ module.exports = {
           children: genSidebarConfig("fe/JavaScript", true)
         },
         {
+          title: "Typescript",
+          collapsable: true,
+          children: genSidebarConfig("fe/Typescript", true)
+        },
+        {
           title: "HTML",
           collapsable: true,
           children: genSidebarConfig("fe/HTML", true)

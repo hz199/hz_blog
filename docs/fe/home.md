@@ -26,3 +26,7 @@ tag: Home
 - [3. Vue.observable @hook](./Vue/03.md)
 - [4. Vue插槽 （slot）](./Vue/04.md)
 - [5. Vue无状态组件 （functional）](./Vue/05.md)
+
+### 4. Typescript
+
+- [1. 语言类型](./Typescript/01.md)

@@ -29,4 +29,4 @@ tag: Home
 
 ### 4. Typescript
 
-- [1. 语言类型](./Typescript/01.md)
+- [1. ts 接口（interface）](./Typescript/01.md)

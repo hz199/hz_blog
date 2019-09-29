@@ -29,4 +29,5 @@ tag: Home
 
 ### 4. Typescript
 
-- [1. ts 接口（interface）](./Typescript/01.md)
+- [1. ts 接口（interface） 泛型](./Typescript/01.md)
+- [2. ts 在react 中的常见用法](./Typescript/02.md)

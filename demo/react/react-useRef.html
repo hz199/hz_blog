@@ -34,22 +34,28 @@
   </script> -->
 
   <script type="text/babel">
-    const { Fragment, useRef, useImperativeHandle, forwardRef } = React
+    const { Fragment, useRef, useImperativeHandle, forwardRef, useEffect } = React
 
     const ChildComp = forwardRef((props, ref) => {
-      const inputRef = useRef(null)
+      const inputRef = useRef()
+
       useImperativeHandle(ref, () => ({
-        focus: () => {
+        focusChild: () => {
           inputRef.current.focus()
         }
       }))
+
       return <input ref={inputRef} />
     })
 
     const App = () => {
-      let currentChildRef = null
-
-      console.log(currentChildRef, 111)
+      let currentChildRef = useRef()
+      
+      useEffect(() => {
+        // 获取子组件暴露出的事件对象， 执行focus
+        console.log(currentChildRef.current)
+        currentChildRef.current.focusChild()
+      }, [])
 
       return <ChildComp ref={currentChildRef}></ChildComp>
     }

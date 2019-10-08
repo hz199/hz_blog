@@ -7,6 +7,7 @@ module.exports = {
   description: 'HZ的前端学习笔记，',
   base: '/',
   head: [
+    ['script', { 'src': '//pingjs.qq.com/h5/stats.js?v2.0.4', 'name': 'MTAH5', 'sid': '500699019', 'cid': '500699020' }],
     ['meta', { 'data-n-head': true, 'data-hid': 'keywords', 'name': 'keywords', 'content': 'HZ的前端学习笔记，其中包含HTML, JavaScript, css, Vue, React Nodejs, flutter等' }],
     ['meta', { 'data-n-head': true, 'data-hid': 'description', 'name': 'description', 'content': 'HZ的前端学习笔记，其中包含HTML, JavaScript, css, Vue, React Nodejs, flutter等' }]
   ],

@@ -74,6 +74,11 @@ module.exports = {
           title: "Dart",
           collapsable: true,
           children: genSidebarConfig("flutter/dart", true)
+        },
+        {
+          title: "flutter",
+          collapsable: true,
+          children: genSidebarConfig("flutter/flutter", true)
         }
       ],
       '/node/': [

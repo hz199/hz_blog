@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Proxy</title>
+</head>
+
+<body>
+
+  <script>
+    const obj = {
+      name: '小明',
+      age: 18
+    }
+
+    const handles = {
+      // 当获取 obj 里面的属性的时候 触发 get 
+      /**
+       * @param target 目标对象
+       * @param key 要修改的 key 
+       * @param receiver 包装过后的Proxy对象
+       */
+      get(target, key, receiver) {
+        return Reflect.get(target, key, receiver)
+      },
+      // 当为 obj 里面的属性设置或者修改值的时候 触发 set 
+      set(target, key, value, receiver) {
+        return Reflect.get(target, key, value, receiver)
+      },
+      // 删除对象属性时 触发 deleteProperty
+      deleteProperty(target, key) {
+        return Reflect.deleteProperty(target, key)
+      }
+    }
+
+    let observed = new Proxy(obj, handles)
+
+    observed.name = '小红'
+    console.log(observed.name)
+
+  </script>
+
+</body>
+
+</html>

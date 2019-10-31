@@ -13,3 +13,4 @@ tag: Home
 ### 2. flutter 组件
 
 - [1. 常用组件](./flutter/01.md)
+- [2. 不规则底部导航](./flutter/02.md)

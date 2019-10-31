@@ -10,7 +10,8 @@ tag: Home
 - [3. 如何正确的判断js数据类型](./JavaScript/03.md)
 - [4. new 运算符](./JavaScript/04.md)
 - [5. 柯里化](./JavaScript/05.md)
-- [6. js的事件循环（Event loop）](./JavaScript/05.md)
+- [6. js的事件循环（Event loop）](./JavaScript/06.md)
+- [7. 简单实现一个深拷贝](./JavaScript/07.md)
 
 ### 2. React
 

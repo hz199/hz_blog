@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue数据传递</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <c-input></c-input>
+  </div>
+
+  <script>
+    // Vue.component('c-form', {
+    //   props: ['message'],
+    //   template: `
+    //   <div>
+    //     <h5>C-comp</h5>
+    //     {{ message }}
+    //   </div>
+    // `,
+    //   mounted() {
+    //     console.log(this.$attrs, 'c')
+    //   }
+    // })
+    // Vue.component('c-form-item', {
+    //   template: `
+    //   <div>
+    //     <h4>b-comp</h4>
+    //     <c-comp v-bind="$attrs" :text="'b -> c'"></c-comp>
+    //   </div>
+    // `,
+    //   mounted() {
+    //     console.log(this.$attrs, 'b')
+    //   }
+    // })
+    Vue.component('c-input', {
+      template: `
+      <div>
+        <input/>
+      </div>
+    `,
+      mounted() {
+        console.log(this.$attrs, 'a')
+      }
+    })
+
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+        }
+      },
+      methods: {
+      }
+    })
+  </script>
+</body>
+
+</html>

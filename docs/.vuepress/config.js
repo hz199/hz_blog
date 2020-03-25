@@ -29,8 +29,8 @@ module.exports = {
         link: '/flutter/home'
       },
       {
-        text: 'node',
-        link: '/node/home'
+        text: '面试题',
+        link: '/interview/home'
       },
       {
         text: '更多',
@@ -81,11 +81,11 @@ module.exports = {
           children: genSidebarConfig("flutter/flutter", true)
         }
       ],
-      '/node/': [
+      '/interview/': [
         {
-          title: "Koa",
+          title: "面试题",
           collapsable: true,
-          children: genSidebarConfig("node/koa", true)
+          children: genSidebarConfig("interview/tip", true)
         }
       ],
       '/utils/': [

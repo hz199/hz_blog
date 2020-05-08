@@ -68,21 +68,29 @@
     }
   }
   .item .ribbonHead h4, .item .ribbonHead .ribbonBack {
-    transition: all 0.3s;
+    transition: all 1s;
   }
 
   .item .ribbonHead .ribbonBack {
-    transition-delay 0.2s
+    transition-delay 0.2s;
+    transform: translate3d(-8px, -59px, 0)
+    opacity 1
   }
 
   .item:hover .ribbonHead h4 {
-    transform: translate3d(-8px, 0, 0);
+    // transform: translate3d(-8px, 0, 0);
     opacity 1
   }
 
-  .item:hover .ribbonHead .ribbonBack {
-    transform: translate3d(-8px, -59px, 0)
-    opacity 1
+  // .item:hover .ribbonHead .ribbonBack {
+  //   transform: translate3d(-8px, -59px, 0)
+  //   opacity 1
+  // }
+  .item-iamge {
+    transition: all 1s;
+  }
+  .item:hover .item-iamge {
+    transform: scale(1.8)
   }
 
   // 头部 title
@@ -90,13 +98,14 @@
     position absolute
   }
   .ribbonHead > h4 {
-    opacity 0
+    transform: translate3d(-8px, 0, 0);
+    opacity 0.5
     max-width: 180px;
     background #C93E3E
     padding 0.8em
     border-radius 0 25px 25px 0
     color #ffffff
-    transform: translate3d(-40px, 0, 0)
+    // transform: translate3d(-40px, 0, 0)
     z-index: 2
     overflow hidden
     text-overflow ellipsis

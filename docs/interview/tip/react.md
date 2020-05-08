@@ -73,20 +73,25 @@ class Comp extends React.Component {
 - 生命周期和合成事件
 
   setState方法将要更新的state存入`_pendingStateQueue`,将要更新的组件存入`dirtyComponent`，最后批处理缓存的组件和state进行更新，保证了组件不会重复渲染。
-
-  **所以。`setState`本身并不是异步的，而是 `React`的批处理机制给人一种异步的假象。**
+  像react原生事件`addEventListener`并不能监听，setState是同步事件
 
 - 连续多次setState只有一次生效
 
   `React`会批处理机制中存储的多个 `setState`进行合并
 
-## 3. React如何实现自己的事件机制
+## 3. React 事件机制原理
+
+[链接](https://www.tuicool.com/articles/FRb2IvR)
+
+react 事件注册过程其实主要做了2件事：* 事件注册、事件存储 *。
+
+1. 事件注册 - 组件挂载阶段，根据组件内的声明的事件类型-onclick，onchange 等，给 document 上添加事件 -addEventListener，并指定统一的事件处理程序 dispatchEvent。
+
+2. 事件存储 - 就是把 react 组件内的所有事件统一的存放到一个对象里，缓存起来，为了在触发事件的时候可以查找到对应的方法去执行。
 
 > `React`事件并没有绑定在真实的 `Dom`节点上，而是通过事件代理，在最外层的 `document`上对事件进行统一分发
 
 
-
-> `React`在自己的合成事件中重写了 `stopPropagation`方法，将 `isPropagationStopped`设置为 `true`，然后在遍历每一级事件的过程中根据此遍历判断是否继续执行。这就是 `React`自己实现的冒泡机制。
 
 ## 4. 为何React事件要自己绑定this
 
@@ -100,5 +105,5 @@ class Comp extends React.Component {
 - 让组件更容易理解
 - 使用函数代替class
 
-## 6. Redux实现原理解析
+## 6. 
 

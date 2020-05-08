@@ -24,7 +24,7 @@
           <div class="ribbonBack"></div>
         </div>
 
-        <img :src="item.bgImage" alt="">
+        <img class="item-iamge" :src="item.bgImage" alt="">
       </router-link>
     </div>
   </transition-group>

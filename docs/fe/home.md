@@ -12,6 +12,7 @@ tag: Home
 - [5. 柯里化](./JavaScript/05.md)
 - [6. js的事件循环（Event loop）](./JavaScript/06.md)
 - [7. 简单实现一个深拷贝](./JavaScript/07.md)
+- [js的一些试题](./JavaScript/09.md)
 
 ### 2. React
 

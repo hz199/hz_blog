@@ -540,6 +540,8 @@ setTimeout(()=>{
 // nodejs输出结果 timer1 => timer2 => promise1 => promise2
 ```
 
+浏览器 await 后面跟的不是异步方法的话 会直接把后面执行代码注册为微任务执行
+
 ## 15, 浏览器渲染页面过程
 
 > 1.根据html文件构建DOM树和CSSOM树。构建DOM树期间，如果遇到JS，阻塞DOM树及CSSOM树的构建，优先加载JS文件，加载完毕，再继续构建DOM树及CSSOM树。

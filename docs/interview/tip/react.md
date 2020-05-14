@@ -105,5 +105,33 @@ react 事件注册过程其实主要做了2件事：* 事件注册、事件存�
 - 让组件更容易理解
 - 使用函数代替class
 
-## 6. 
+## 6. React和Vue区别
+ 1. 数据流的不同
+  - vue双向数据v-mode
+  - react单向数据
+2. 监听数据变化的实现原理不同
+  - Vue通过 getter/setter以及一些函数的劫持，能精确知道数据变化。
+  - react diff算法整体刷新需要优化
+
+3. react HoC和 vue mixins
+
+4. 组件之间通信
+  - vue
+    - $emit 事件 props
+    - $listeners $attrs
+    - provide / inject
+    - $parent / $children
+    - Vuex 状态管理
+
+  - react
+    - context
+    - props callback
+    - redux mobx
+
+5. 渲染过程不同
+ - vue vdom在渲染的过程中会跟踪每个组件的依赖关系
+ - react 应用的状态发生改变时整个子组件都会发生改变需要自己做优化
+
+
+## 7.
 

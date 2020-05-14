@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //obj就是可遍历的，因为它遵循了Iterator标准，且包含[Symbol.iterator]方法，方法函数也符合标准的Iterator接口规范。
+    //obj.[Symbol.iterator]() 就是Iterator遍历器
+    let obj = {
+      data: ['hello', 'world'],
+      [Symbol.iterator]() {
+        const self = this;
+        let index = 0;
+        return {
+          next() {
+            if (index < self.data.length) {
+              return {
+                value: self.data[index++],
+                done: false
+              };
+            } else {
+              return {
+                value: undefined,
+                done: true
+              };
+            }
+          }
+        };
+      }
+    };
+
+    console.log(obj)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二分查找</title>
+</head>
+
+<body>
+  <script>
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 23, 44, 86];
+
+    /*
+     * @param [arr] 有序数组
+     * @param [target] 查找目标
+     * @return [number] 索引值
+     */
+    const binaryFind = function (arr, target) {
+      let low = 0
+      let min
+      let high = arr.length - 1
+
+      while (low <= high) {
+        min = Math.floor((low + high) / 2)
+
+        const currnt = arr[min]
+
+        if (target === currnt) {
+          return min + 1
+        }
+
+        if (target > currnt) {
+          low = min + 1
+        } else if (target < currnt) {
+          high = min - 1
+        }
+      }
+
+      return -1
+    }
+
+    console.log(binaryFind(arr, 2))
+  </script>
+</body>
+
+</html>

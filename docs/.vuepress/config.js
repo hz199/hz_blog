@@ -28,10 +28,10 @@ module.exports = {
         text: 'Flutter',
         link: '/flutter/home'
       },
-      {
-        text: '面试题',
-        link: '/interview/home'
-      },
+      // {
+      //   text: '面试题',
+      //   link: '/interview/home'
+      // },
       {
         text: '更多',
         items: [

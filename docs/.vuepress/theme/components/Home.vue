@@ -2,8 +2,8 @@
   <transition-group name="list" tag="div" appear class="home">
     <div class="item" key="item-1">
       <ul class="clearfix">
-        <li style="background: #fff; color: #333" class="tag" @click="onClick('/')">
-          <i style="border-right-color: #fff"></i>
+        <li style="background: #333333; color: #333; color: #fff" class="tag" @click="onClick('/')">
+          <i style="border-right-color: #333333"></i>
           <span>
             全部
           </span>
@@ -16,12 +16,12 @@
         </li>
       </ul>
     </div>
-    <div class="item" v-for="(item, index) in list" :key="'item'+ index">
+    <div class="item item--shadow" v-for="(item, index) in list" :key="'item'+ index">
       <!-- <div class="tag">{{ item.tag }}</div> -->
       <router-link class="title" :to="item.path">
         <div class="ribbonHead">
           <h4>{{ item.title }}</h4>
-          <div class="ribbonBack"></div>
+          <!-- <div class="ribbonBack"></div> -->
         </div>
 
         <img class="item-iamge" :src="item.bgImage" alt="">
@@ -47,6 +47,10 @@ export default {
 @require './styles/home.styl';
 .list-item {
   // display: inline-block;
+}
+.item--shadow {
+  box-shadow: -10px -10px 20px #FFF, 10px 10px 20px #BABECC;
+  padding 5px
 }
 .list-enter-active, .list-leave-active {
   transition: all 1s;

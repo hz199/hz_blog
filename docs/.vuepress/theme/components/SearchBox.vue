@@ -209,23 +209,24 @@ export default {
     cursor text
     // width 10rem
     width calc(100% - 2rem)
-    height: 2rem
+    height: 2.5rem
     color lighten($textColor, 25%)
     display inline-block
-    border 1px solid darken($borderColor, 10%)
+    border 0px solid darken($borderColor, 10%)
     border-radius 2rem
     font-size 0.9rem
-    line-height 2rem
+    line-height 2.5rem
     // padding 0 0.5rem 0 2rem
     padding 0 1rem 0 1rem
     outline none
     transition all .2s ease
     // background #fff url(search.svg) 0.6rem 0.5rem no-repeat
     // background-size 1rem
-    background #fff 
+    background #EBECF0 
+    box-shadow inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF
     &:focus
       cursor auto
-      border-color $accentColor
+      // border-color $accentColor
   .suggestions
     background #fff
     // width 20rem

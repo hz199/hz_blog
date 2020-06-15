@@ -140,3 +140,20 @@ history实际采用了HTML5中提供的API来实现，主要有`history.pushStat
 ## 26. 简述Vuex的工作原理
 
 ## 27. Vue3.0有哪些改进
+
+## 28. react和vue的区别
+
+  1. 监听数据变化的方式
+    - vue是用数据劫持
+    - react setState
+  2. 数据流
+    - vue 父子之间使用 props $emit, dom之间使用v-model
+    - react props state
+
+  3. 组件通信
+  4. 模板渲染方式
+    - vue template 指令的方式
+    - jsx
+  5. 渲染过程
+    - 渲染过程中vue会跟踪每个组件的依赖关系，不需要重新渲染整个组件树
+    - react diff 需要使用 shouldComponentUpdate生命周期控制

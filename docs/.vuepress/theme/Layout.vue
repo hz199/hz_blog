@@ -117,7 +117,7 @@ export default {
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
-  background: #c7edcc;
+  background: #EBECF0;
 
   // border-radius 30px
   div {

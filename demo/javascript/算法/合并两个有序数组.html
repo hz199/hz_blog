@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var nums1 = [1, 2, 3, 0, 0, 0],
+      m = 3;
+    var nums2 = [2, 5, 6, 8],
+      n = 4;
+
+    /**
+     * @param {number[]} nums1
+     * @param {number} m
+     * @param {number[]} nums2
+     * @param {number} n
+     */
+     var merge = (nums1, m, nums2, n) => {
+        //从后向前插入，
+        // l 表示从后向前当前插入位置
+        var l = m + n - 1;
+        // i 标记数组 nums1 当前比较位置
+        var i = m - 1;
+        // j 标记数组 nums2 当前比较位置
+        var j = n - 1;
+        //将数组 nums 2 全部数据插入到数组 nums1 为止
+        while (j >= 0) {
+          //当数组 nums1 当前可比较数据位 i 大于等于 0 并且数组 nums1 当前位置值比 nums2 当前位置值大时，将数组 nums1 当前位置数组 插入到 l 位置 ，i 位指针向前挪一位
+          //否则将 nums2 当前位置数据插入到 l 位置，j 位指针向前挪一位
+          // 当前插入位置 l 向前挪一位
+          nums1[l--] = (i >= 0 && nums1[i] >= nums2[j]) ? nums1[l] = nums1[i--] : nums2[j--];
+        }
+      }
+
+      merge(nums1, m, nums2, n)
+
+      console.log(nums1)
+
+  </script>
+</body>
+
+</html>

@@ -50,6 +50,9 @@ export default {
   float left
   cursor pointer
   font-weight bold
+  color #aaaaaa
+  font-weight bold
+  text-shadow 1px 1px 1px #FFF
 }
 .nav-wrapper {
   float right
@@ -67,6 +70,10 @@ export default {
 .navs
   margin 0 auto 0px auto
   text-align center
+  font-weight bold
+  text-shadow 1px 1px 1px #FFF
+  > a:hover
+    border-bottom-color: #fff;
   > div 
     display inline-block
     position relative
@@ -101,7 +108,7 @@ a.nav
   cursor pointer
   margin 0 8px
   display inline-block
-  color #2c3e50
+  color #aaaaaa
   span 
     display inline-block
 </style>

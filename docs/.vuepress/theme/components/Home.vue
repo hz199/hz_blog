@@ -39,6 +39,7 @@ export default {
   ],
   mounted () {
     document.getElementById('app').style.backgroundImage = ''
+    console.log(this.list)
   }
 }
 </script>

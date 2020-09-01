@@ -40,7 +40,6 @@ class LinkedList {
   // 指定位置插入元素
   insert (position, data) {
     if (position < 0 || position > this.length) return false
-    
     const newNode = new Node(data)
     // 1. 插入头部元素
     if (position === 0) {
@@ -62,17 +61,36 @@ class LinkedList {
 
     this.length += 1
 
-    return true 
+    return true
   }
 
   // 指定位置添加元素
   get (position) {
+    if (position < 0 || position >= this.length) return null
+    let currentNode = this.head
+    let index = 0
+    while (index ++ < position) {
+      currentNode = currentNode.next
+    }
 
+    return currentNode.data
   }
 
   // 查找元素的位置
   indexOf (data) {
+    let currentNode = this.head
+    let index = 0
 
+    while (currentNode) {
+      if (currentNode.data === data) {
+        return index
+      } else {
+        currentNode = currentNode.next
+        index += 1
+      }
+    }
+
+    return -1
   }
 
   // update 修改固定位置元素
@@ -117,3 +135,5 @@ linkedList.append(3)
 linkedList.append(6)
 linkedList.insert(2, 1)
 console.log(linkedList.toString())
+console.log('get(4)', linkedList.get(4))
+console.log('indexOf(3):', linkedList.indexOf(3))

@@ -62,7 +62,7 @@ class LinkedList {
 
     this.length += 1
 
-    return true
+    return true 
   }
 
   // 指定位置添加元素

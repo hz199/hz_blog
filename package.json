@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "node ./builds/addComponents.js && vuepress build docs && node ./builds/delComponents.js",
-    "sh": "bash deploy.sh"
+    "sh": "bash deploy.sh",
+    "parcel": "rm -rf ./demo/dist && parcel ./demo/dataStructure/**/*.html -d demo/dist"
   },
   "devDependencies": {
     "less": "^3.10.3",

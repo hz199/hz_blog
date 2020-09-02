@@ -89,7 +89,7 @@ class LinkedList {
 
   }
 
-  isEmpy () {
+  isEmpty () {
 
   }
 

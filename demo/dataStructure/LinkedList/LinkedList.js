@@ -94,25 +94,76 @@ class LinkedList {
   }
 
   // update 修改固定位置元素
-  update (position) {
+  update (position, data) {
+    if (position < 0 || position >= this.length) return false
+    let currentNode = this.head
+    let index = 0
+    while (index ++ < position) {
+      currentNode = currentNode.next
+    }
 
+    currentNode.data = data
+    return true
   }
 
   // 删除
   removeAt (position) {
+    if (position < 0 || position >= this.length) return null
+    let currentNode = this.head
+    let prevNode = null
+    // let nextNode = null
+    let index = 0
 
+    // 删除head
+    if (position === 0) {
+      this.head = currentNode.next
+    } else {
+      while (index ++ < position) {
+        prevNode = currentNode
+        currentNode = currentNode.next
+      }
+
+      // if (currentNode.next) {
+      //   nextNode = currentNode.next
+      //   prevNode.next = nextNode
+      // } else {
+      //   prevNode.next = null
+      // }
+      prevNode.next = currentNode.next
+    }
+
+    this.length -= 1
+    return currentNode.data
   }
 
   remove(data) {
+    const position = this.indexOf(data)
 
+    return this.removeAt(position)
   }
 
   isEmpty () {
-
+    return this.length === 0
   }
 
   size () {
+    return this.length
+  }
 
+  // 反转链表
+  reverse () {
+    let nextNode = null
+    let prevNode = null
+    let headNode = this.head
+
+    while (headNode != null) {
+      nextNode = headNode.next
+      headNode.next = prevNode
+      prevNode = headNode
+      headNode = nextNode
+    }
+
+    this.head = prevNode
   }
 
   toString() {
@@ -133,7 +184,15 @@ linkedList.append(2)
 linkedList.append(4)
 linkedList.append(3)
 linkedList.append(6)
-linkedList.insert(2, 1)
-console.log(linkedList.toString())
-console.log('get(4)', linkedList.get(4))
-console.log('indexOf(3):', linkedList.indexOf(3))
+// linkedList.insert(2, 1)
+// console.log(linkedList.toString())
+// console.log('get(4)', linkedList.get(4))
+// console.log('indexOf(3):', linkedList.indexOf(3))
+// console.log('update(3, "555")', linkedList.update(4, '555'))
+// console.log('removeAt(3)', linkedList.removeAt(3))
+// console.log('removeAt(0)', linkedList.removeAt(0))
+
+console.log(linkedList)
+
+linkedList.reverse()
+console.log(linkedList)

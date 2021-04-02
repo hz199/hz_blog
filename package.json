@@ -1,5 +1,5 @@
 {
-  "name": "__",
+  "name": "hz_blog",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:hz199/__.git",
@@ -14,13 +14,9 @@
   "devDependencies": {
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
-    "vuepress": "^1.0.3"
+    "vuepress": "^1.8.2"
   },
   "dependencies": {
-    "gitalk": "^1.5.0",
-    "vuepress-theme-api": "^0.2.3",
-    "vuepress-theme-gouv-fr": "^0.7.1",
-    "vuepress-theme-reco": "^1.0.4",
-    "vuepress-theme-x": "^1.2.0"
+    "gitalk": "^1.5.0"
   }
 }

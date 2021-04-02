@@ -16,12 +16,13 @@
         </li>
       </ul>
     </div>
-    <div class="item item--shadow" v-for="(item, index) in list" :key="'item'+ index">
-      <!-- <div class="tag">{{ item.tag }}</div> -->
+    <div class="item item--shadow" 
+      v-for="(item, index) in list" :key="'item'+ index"
+    >
       <router-link class="title" :to="item.path">
         <div class="ribbonHead">
           <h4>{{ item.title }}</h4>
-          <!-- <div class="ribbonBack"></div> -->
+          <div class="ribbonBack"></div>
         </div>
 
         <img class="item-iamge" :src="item.bgImage" alt="">
@@ -39,16 +40,14 @@ export default {
   ],
   mounted () {
     document.getElementById('app').style.backgroundImage = ''
-    console.log(this.list)
+  },
+  methods: {
   }
 }
 </script>
 
 <style lang="stylus" scoped>
 @require './styles/home.styl';
-.list-item {
-  // display: inline-block;
-}
 .item--shadow {
   box-shadow: -10px -10px 20px #FFF, 10px 10px 20px #BABECC;
   padding 5px

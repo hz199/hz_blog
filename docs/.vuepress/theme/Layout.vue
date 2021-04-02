@@ -56,6 +56,7 @@ export default {
   },
   mounted: function() {
     this.list = [];
+
     for (let i = 0; i < this.$site.pages.length; i++) {
       let page = this.$site.pages[i];
       if (page.path !== "/" && page.frontmatter.tag !== 'Home') {

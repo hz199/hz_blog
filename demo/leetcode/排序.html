@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = [65,876,3,72,23,897,7]
+    const bubble_sort = (arr) => {
+      let i, j, temp, len = arr.length;
+      for (i = 0; i < len - 1; i++)
+        for (j = 0; j < len - 1 - i; j++)
+          if (arr[j] > arr[j + 1]) {
+            temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+    }
+
+    bubble_sort(arr)
+    console.log(arr)
+  </script>
+</body>
+
+</html>

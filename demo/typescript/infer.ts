@@ -6,35 +6,39 @@ interface User {
   age: number;
 }
 
-type Func = (user: User) => string
+type Func = (user: User) => number
 
 type Param = inferType<Func>
 
 type AA = inferType<string>
 
-class TestClass {
+class TestClass3 {
 
   constructor(
     public name: string,
-    public string: number
-  ) {}
+    public string: string
+  ) {
+    this.name = name
+    this.string = string
+  }
 }
 
-class ClassTest1 {
-  constructor (age: number, params: Function) {
-
+class ClassTest extends TestClass3 {
+  constructor () {
+    super('小明', '小明小明')
   }
 
   public name: string
 
-  eat () {}
+  eat () {
+  }
 
   work () {}
 }
 
-type ClassType = typeof TestClass
+type ClassType = typeof TestClass3
 
-type Params = ConstructorParameters<typeof ClassTest1>;  // [string, numbder]
+type Params = ConstructorParameters<typeof ClassTest>;  // [string, numbder]
 
 type ReturnClassType = ReturnType<Func>
 
